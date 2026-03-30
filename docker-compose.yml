@@ -1,18 +1,18 @@
 services:
   database:
-    image: mysql:8.4
+    image: mysql:8.4                    #in docker hub, get the mysql 8.4version image(get execution file)
     container_name: my_db
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=app_db
+      - MYSQL_ROOT_PASSWORD=password    #DB관리자의 비밀번호를 설정하기
+      - MYSQL_DATABASE=app_db           #app_db라는 데이터베이스를 자동으로 만들기
     ports:
-      - "3306:3306"
+      - "3306:3306"                     #connect the 3306port in my computer(host) with 3306port in docker container
     networks:
-      - nat1
+      - nat1                            #DB use the exclusive nat1
 
 
 
-  adminer:
+  adminer:                              #define service
     image: adminer
     container_name: adminer
     ports:
@@ -22,7 +22,7 @@ services:
 
 networks:
   nat1:
-      driver: bridge
+      driver: bridge                  #네트워크 방식/ 컨테이너들끼리 통신할 수 있는 가상의 다리를 놓기
     
-  nat2:
-      driver: bridge
+#   nat2:
+#       driver: bridge
